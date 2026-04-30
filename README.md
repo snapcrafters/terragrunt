@@ -67,7 +67,7 @@ Now that your git metadata has been updated you are ready to create a bugfix bra
 2. Make your desired changes and build a snap locally for testing:
 
     ```shell
-    snapcraft --use-lxd
+    snapcraft --use-lxd # or `snapcraft test` for for building and testing
     ```
 
 3. After you are happy with your changes, commit them and push them to your fork so they are available on GitHub:
@@ -85,6 +85,7 @@ Now that your git metadata has been updated you are ready to create a bugfix bra
 ## Maintainers
 
 -   [@jnsgruk](https://github.com/jnsgruk)
+-   [@cjdcordeiro](https://github.com/cjdcordeiro)
 
 ## License
 

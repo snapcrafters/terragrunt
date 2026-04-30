@@ -1,0 +1,6 @@
+summary: Test task example
+
+execute: |
+  terragrunt --help
+
+  # TODO: add more tests here

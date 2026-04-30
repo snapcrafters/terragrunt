@@ -1,0 +1,27 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - candidate
+    paths:
+      - "snap/**"
+      - ".github/**"
+      - "test/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build & Test Snap (amd64)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup for testing
+        run: |
+          sudo snap install snapcraft --classic
+
+      - name: Test snap
+        run: |
+          snapcraft test
