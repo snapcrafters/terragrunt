@@ -1,6 +1,22 @@
-summary: Test task example
+summary: Test terragrunt snap functionality
 
 execute: |
+  # Test help command
   terragrunt --help
 
-  # TODO: add more tests here
+  # Create a simple terragrunt.hcl to test basic functionality
+  WORKDIR=$(mktemp -d)
+  cd "$WORKDIR"
+  
+  cat > terragrunt.hcl << 'EOF'
+  terraform {
+    source = "."
+  }
+  
+  inputs = {
+    example = "test"
+  }
+  EOF
+
+  # Test hclfmt on the file
+  terragrunt run hclfmt

@@ -18,6 +18,8 @@ apps:
   terragrunt:
     command: bin/terragrunt
     plugs: [home, network, network-bind]
+    environment:
+      PATH: $SNAP/bin:$PATH
 
 platforms:
   amd64:
@@ -27,7 +29,15 @@ platforms:
   ppc64el:
 
 parts:
+  terraform:
+    plugin: nil
+    stage-snaps:
+      - terraform
+    organize:
+      bin/terraform: bin/terraform
+
   terragrunt:
+    after: [terraform]
     source: https://github.com/gruntwork-io/terragrunt.git
     source-type: git
     source-tag: "v$SNAPCRAFT_PROJECT_VERSION"
