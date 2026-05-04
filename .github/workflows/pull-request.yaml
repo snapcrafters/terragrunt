@@ -18,9 +18,8 @@ jobs:
     name: Build & Test Snap (amd64)
     runs-on: ubuntu-latest
     steps:
-      - name: Setup for testing
-        run: |
-          sudo snap install snapcraft --classic
+      - name: 🧪 Build snap
+        uses: snapcrafters/ci/test-snap-build@main
 
       - name: Test snap
         run: |
