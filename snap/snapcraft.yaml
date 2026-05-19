@@ -1,5 +1,5 @@
 name: terragrunt
-version: 1.0.4
+version: 1.0.5
 base: core24
 summary: Orchestration tool that allows IaC written in OpenTofu/Terraform to scale.
 description: |
