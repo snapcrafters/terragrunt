@@ -19,13 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🧪 Build snap
-        uses: snapcrafters/ci/test-snap-build@main
+        run: |
+          sudo snap install snapcraft --classic
+        #
+        #uses: snapcrafters/ci/test-snap-build@main
 
       - name: Setup LXD
         uses: canonical/setup-lxd@d14f946da89caa319fd083d39b1960f4978fb982
 
       - name: Test snap
         run: |
+          whoami
+          lxc list
+          lxd version
+          lxc version
+          snap info lxd
           sudo usermod -aG lxd $USER
           newgrp lxd
-          snapcraft test --verbosity trace || cat /home/runner/.local/state/snapcraft/log/snapc*.log
+          snapcraft test --verbosity trace
