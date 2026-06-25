@@ -21,6 +21,9 @@ jobs:
       - name: 🧪 Build snap
         uses: snapcrafters/ci/test-snap-build@main
 
+      - name: Setup LXD
+        uses: canonical/setup-lxd@d14f946da89caa319fd083d39b1960f4978fb982
+
       - name: Test snap
         run: |
           sudo usermod -aG lxd $USER
