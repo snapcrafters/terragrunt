@@ -23,4 +23,4 @@ jobs:
 
       - name: Test snap
         run: |
-          snapcraft test
+          sg lxd -c 'snapcraft test'

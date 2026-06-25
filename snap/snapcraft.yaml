@@ -12,12 +12,13 @@ source-code: https://github.com/snapcrafters/terragrunt
 website: https://terragrunt.com/
 license: MIT
 
-confinement: strict
+confinement: classic
 
 apps:
   terragrunt:
     command: bin/terragrunt
-    plugs: [home, network, network-bind]
+    environment:
+      PATH: $SNAP/bin:$PATH
 
 platforms:
   amd64:

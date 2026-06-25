@@ -1,6 +1,9 @@
-summary: Test task example
+summary: Test terragrunt snap functionality
 
 execute: |
+  # Test help command
   terragrunt --help
 
-  # TODO: add more tests here
+  terragrunt init
+  terragrunt apply -auto-approve
+

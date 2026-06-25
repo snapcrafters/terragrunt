@@ -13,7 +13,8 @@ suites:
   spread/general/:
     summary: General integration tests
     prepare: |
-      snap install "$CRAFT_ARTIFACT" --dangerous --jailmode
+      snap install "$CRAFT_ARTIFACT" --dangerous --classic
+      snap install terraform --classic
     restore: |
       snap remove terragrunt-snap --purge --terminate
 
