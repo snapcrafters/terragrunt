@@ -12,7 +12,7 @@ source-code: https://github.com/snapcrafters/terragrunt
 website: https://terragrunt.com/
 license: MIT
 
-confinement: strict
+confinement: classic
 
 apps:
   terragrunt:
