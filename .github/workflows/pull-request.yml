@@ -28,4 +28,4 @@ jobs:
         run: |
           sudo usermod -aG lxd $USER
           newgrp lxd
-          snapcraft test
+          snapcraft test --verbosity trace || cat /home/runner/.local/state/snapcraft/log/snapc*.log
