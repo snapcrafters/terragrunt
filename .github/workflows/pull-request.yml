@@ -23,4 +23,6 @@ jobs:
 
       - name: Test snap
         run: |
+          sudo usermod -aG lxd $USER
+          newgrp lxd
           snapcraft test
