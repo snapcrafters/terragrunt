@@ -23,6 +23,4 @@ jobs:
 
       - name: Test snap
         run: |
-          /usr/bin/sudo groupadd --force --system lxd || true
-          /usr/bin/sudo usermod --append --groups lxd runner
-          snapcraft test
+          sg lxd -c 'snapcraft test'
