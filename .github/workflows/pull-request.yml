@@ -34,6 +34,6 @@ jobs:
           lxd version
           lxc version
           snap info lxd
-          sudo usermod -aG lxd $USER
-          newgrp lxd
+          #sudo usermod -aG lxd $USER
+          #newgrp lxd
           snapcraft test --verbosity trace
