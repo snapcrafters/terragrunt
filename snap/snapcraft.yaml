@@ -17,7 +17,6 @@ confinement: classic
 apps:
   terragrunt:
     command: bin/terragrunt
-    plugs: [home, network, network-bind]
     environment:
       PATH: $SNAP/bin:$PATH
 
