@@ -27,6 +27,9 @@ jobs:
       - name: Setup LXD
         uses: canonical/setup-lxd@d14f946da89caa319fd083d39b1960f4978fb982
 
+      - name: Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
       - name: Test snap
         run: |
           whoami
