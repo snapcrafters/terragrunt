@@ -20,7 +20,9 @@ jobs:
     steps:
       - name: 🧪 Build snap
         uses: snapcrafters/ci/test-snap-build@main
+        with:
+          install: true
 
       - name: Test snap
         run: |
-          snapcraft test
+          terragrunt --help
