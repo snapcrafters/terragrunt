@@ -19,11 +19,21 @@ jobs:
     steps:
       - name: 🔄 Sync version with upstream
         uses: snapcrafters/ci/sync-version@main
+        env:
+          GH_TOKEN: ${{ secrets.SNAPCRAFTERS_BOT_COMMIT }}
         with:
           token: ${{ secrets.SNAPCRAFTERS_BOT_COMMIT }}
           update-script: |
-            VERSION=$(
-              curl -sL https://api.github.com/repos/gruntwork-io/terragrunt/releases |
-              jq -r '.[].tag_name' | grep -m1 -vE 'alpha|beta|rc' | tr -d 'v'
+            TAG=$(
+              gh api repos/gruntwork-io/terragrunt/releases/latest |
+              jq --exit-status --raw-output \
+                '.tag_name | select(type == "string" and length > 0)'
             )
+            VERSION="${TAG#v}"
+
+            if [[ ! "$VERSION" =~ ^[0-9]+([.][0-9]+)+([+-][0-9A-Za-z.-]+)?$ ]]; then
+              echo "Invalid upstream version: $VERSION" >&2
+              exit 1
+            fi
+
             sed -i 's/^\(version: \).*$/\1'"$VERSION"'/' snap/snapcraft.yaml
